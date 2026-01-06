@@ -1,16 +1,26 @@
-# my_app
+# Rick and Morty characters app
+A simple app displaying Rick and Morty's characters and their details.
 
-A new Flutter project.
+## Architecture Overview
+This project follows a Layered Architecture to ensure a clean separation of concerns:
+    **Presentation Layer:** Pure UI components and screens.
+    **Business Logic (Cubit):** Uses the Bloc pattern to manage state transitions independently of the UI.
+    **Data Layer:** Handles API calls via web_services and maps them to models, providing data to the rest of the app through the repository pattern.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+lib/
+├── business_logic/          # State Management layer (Cubit)
+│   └── cubit/               # Manages app state and emits UI updates
+├── constants/               # Global configuration and styling
+│   ├── app_colors.dart      # Centralized theme colors
+│   └── strings.dart         # Static strings and API endpoints
+├── data/                    # Data Layer (External interactions)
+│   ├── models/              # Data classes and JSON serialization
+│   ├── repository/          # Bridges Data Sources and Business Logic
+│   └── web_services/        # Network requests (e.g., Dio/Retrofit)
+├── presentation/            # UI Layer (Widgets and Screens)
+│   ├── screens/             # Main application pages
+│   └── widgets/             # Reusable UI components
+├── app_router.dart          # Centralized navigation management
+└── main.dart                # Application entry point
+```
