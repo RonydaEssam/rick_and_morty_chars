@@ -55,6 +55,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
 
   Widget buildCharactersList() {
     return GridView.builder(
+      itemCount: allCharacters.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 2 / 3,
@@ -65,7 +66,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
       physics: const ClampingScrollPhysics(),
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        return CharacterItem();
+        return CharacterItem(
+          character: allCharacters[index],
+        );
       },
     );
   }

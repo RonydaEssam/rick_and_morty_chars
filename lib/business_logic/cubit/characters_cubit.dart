@@ -11,7 +11,7 @@ class CharactersCubit extends Cubit<CharactersState> {
   CharactersCubit(this.charactersRepository) : super(CharactersInitial());
 
   final CharactersRepository charactersRepository;
-  late List<Character> characters;
+  List<Character> characters = [];
 
   List<Character> getAllCharacters() {
     charactersRepository.getAllCharacters().then(
