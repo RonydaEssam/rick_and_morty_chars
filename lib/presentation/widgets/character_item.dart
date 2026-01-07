@@ -25,19 +25,23 @@ class CharacterItem extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Text(
             character.name,
-            style: TextStyle(height: 1.3, fontSize: 16, color: AppColors.grey),
+            style: TextStyle(
+              height: 1.2,
+              fontSize: 18,
+              color: AppColors.grey,
+              fontWeight: FontWeight.bold,
+            ),
             overflow: TextOverflow.ellipsis,
-            maxLines: 2,
+            maxLines: 1,
             textAlign: TextAlign.center,
           ),
         ),
         child: Container(
-          color: AppColors.grey,
           child: character.image.isNotEmpty
               ? FadeInImage.assetNetwork(
                   width: double.infinity,
                   height: double.infinity,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
                   placeholder: 'assets/images/Loading Dots Blue.gif',
                   image: character.image,
                 )
