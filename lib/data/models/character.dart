@@ -6,9 +6,9 @@ class Character {
   late String gender;
   late String lifeStatus;
   late String image;
-  late Location origin;
-  late Location location;
-  late List<String> episodesApperance;
+  // late Location origin;
+  // late Location location;
+  late List<dynamic> episodesApperance;
 
   Character.fromJson(Map<String, dynamic> json) {
     characterId = json['id'];
@@ -18,12 +18,13 @@ class Character {
     gender = json['gender'];
     lifeStatus = json['status'];
     image = json['image'];
-    origin = json['origin'];
-    location = json['location'];
+    // origin = json['origin'];
+    // location = json['location'];
     episodesApperance = json['episode'];
   }
 }
 
+/*
 class Location {
   late String name;
   late String url;
@@ -35,3 +36,4 @@ class Location {
     url = json['url'];
   }
 }
+*/
