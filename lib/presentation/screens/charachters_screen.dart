@@ -124,7 +124,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
         child: Column(
           children: [
             GridView.builder(
-              itemCount: allCharacters.length,
+              itemCount: _searchTextController.text.isEmpty
+                  ? allCharacters.length
+                  : searchedForCharacters.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 1,
@@ -136,7 +138,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
                 return CharacterItem(
-                  character: allCharacters[index],
+                  character: _searchTextController.text.isEmpty
+                      ? allCharacters[index]
+                      : searchedForCharacters[index],
                 );
               },
             ),
