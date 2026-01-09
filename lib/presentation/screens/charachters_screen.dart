@@ -129,7 +129,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
                   : searchedForCharacters.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 1,
+                childAspectRatio: 2 / 3,
                 crossAxisSpacing: 1,
                 mainAxisSpacing: 1,
               ),

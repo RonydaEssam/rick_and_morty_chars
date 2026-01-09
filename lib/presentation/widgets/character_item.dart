@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/constants/app_colors.dart';
+import 'package:my_app/constants/strings.dart';
 import 'package:my_app/data/models/character.dart';
 
 class CharacterItem extends StatelessWidget {
@@ -17,35 +18,45 @@ class CharacterItem extends StatelessWidget {
         color: AppColors.cyan,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: GridTile(
-        footer: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          color: Colors.black54,
-          alignment: Alignment.bottomCenter,
-          child: Text(
-            character.name,
-            style: TextStyle(
-              height: 1.2,
-              fontSize: 18,
-              color: AppColors.grey,
-              fontWeight: FontWeight.bold,
-            ),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-          ),
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(
+          context,
+          characterDetailsScreen,
+          arguments: character,
         ),
-        child: Container(
-          child: character.image.isNotEmpty
-              ? FadeInImage.assetNetwork(
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fitWidth,
-                  placeholder: 'assets/images/Loading Dots Blue.gif',
-                  image: character.image,
-                )
-              : Image.asset('assets/images/user.gif'),
+        child: GridTile(
+          footer: Hero(
+            tag: character.characterId,
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              color: Colors.black54,
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                character.name,
+                style: TextStyle(
+                  height: 1.2,
+                  fontSize: 18,
+                  color: AppColors.grey,
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          child: Container(
+            child: character.image.isNotEmpty
+                ? FadeInImage.assetNetwork(
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: 'assets/images/Loading Dots Blue.gif',
+                    image: character.image,
+                  )
+                : Image.asset('assets/images/user.gif'),
+          ),
         ),
       ),
     );

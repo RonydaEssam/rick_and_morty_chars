@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_app/business_logic/cubit/characters_cubit.dart';
 import 'package:my_app/constants/strings.dart';
+import 'package:my_app/data/models/character.dart';
 import 'package:my_app/data/repository/characters_repo.dart';
 import 'package:my_app/data/web_services/characters_web_services.dart';
 import 'package:my_app/presentation/screens/charachters_screen.dart';
@@ -28,8 +29,11 @@ class AppRouter {
           ),
         );
       case characterDetailsScreen:
+        final character = settings.arguments as Character;
         return MaterialPageRoute(
-          builder: (context) => CharacterDetailsScreen(),
+          builder: (context) => CharacterDetailsScreen(
+            character: character,
+          ),
         );
     }
     return null;
