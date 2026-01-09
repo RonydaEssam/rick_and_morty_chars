@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:my_app/constants/app_colors.dart';
 import 'package:my_app/data/models/character.dart';
@@ -36,6 +38,39 @@ class CharacterDetailsScreen extends StatelessWidget {
     );
   }
 
+  Widget characterInfo(String title, String info) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: AppColors.bluish,
+          ),
+          textAlign: TextAlign.start,
+          maxLines: 1,
+        ),
+        SizedBox(
+          height: 4,
+        ),
+        Text(
+          info,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: AppColors.bluish,
+          ),
+          textAlign: TextAlign.start,
+          maxLines: 1,
+        ),
+        SizedBox(height: 8),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,24 +88,21 @@ class CharacterDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Species:',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      characterInfo('Species', character.species),
+                      character.speciesType.isEmpty
+                          ? Container()
+                          : characterInfo('Type', character.speciesType),
+                      characterInfo('Gender', character.gender),
+                      characterInfo('Status', character.lifeStatus),
+                      characterInfo(
+                        'Appeared In',
+                        '${character.episodesApperance.length.toString()} episodes',
                       ),
-                      Text(
-                        character.species,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(height: 1000),
+                      SizedBox(height: 20),
                     ],
                   ),
                 ),
+                SizedBox(height: 400),
               ],
             ),
           ),
