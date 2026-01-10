@@ -1,5 +1,5 @@
-import 'package:my_app/data/models/character.dart';
-import 'package:my_app/data/web_services/characters_web_services.dart';
+import '../models/character.dart';
+import '../web_services/characters_web_services.dart';
 
 class CharactersRepository {
   final CharactersWebServices charactersWebServices;

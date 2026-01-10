@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:my_app/constants/app_colors.dart';
-import 'package:my_app/data/models/character.dart';
+import '../../constants/app_colors.dart';
+import '../../data/models/character.dart';
 
 class CharacterDetailsScreen extends StatelessWidget {
   final Character character;

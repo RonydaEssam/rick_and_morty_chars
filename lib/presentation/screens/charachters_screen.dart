@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/business_logic/cubit/characters_cubit.dart';
-import 'package:my_app/constants/app_colors.dart';
-import 'package:my_app/data/models/character.dart';
-import 'package:my_app/presentation/widgets/character_item.dart';
+import '../../business_logic/cubit/characters_cubit.dart';
+import '../../constants/app_colors.dart';
+import '../../data/models/character.dart';
+import '../widgets/character_item.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
@@ -150,6 +151,38 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  Widget buildNoInternetWidget() {
+    return Center(
+      child: Container(
+        width: double.infinity,
+        color: Colors.white,
+        margin: EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 20),
+            Text(
+              'Can\'t connect right now....\nPlease check your Connection.',
+              style: TextStyle(
+                fontSize: 22,
+                color: AppColors.bluish,
+                fontWeight: FontWeight.w500,
+                height: 1.6,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 40),
+            Image.asset(
+              'assets/images/connection_lost.png',
+              alignment: Alignment.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,7 +192,21 @@ class _CharactersScreenState extends State<CharactersScreen> {
         actions: _buildAppBarActions(),
         leading: _isSearching ? BackButton(color: AppColors.grey) : null,
       ),
-      body: buildBlocWidget(),
+      body: OfflineBuilder(
+        connectivityBuilder: (context, connectivity, child) {
+          final bool connected = !connectivity.contains(
+            ConnectivityResult.none,
+          );
+          if (connected) {
+            return buildBlocWidget();
+          } else {
+            return buildNoInternetWidget();
+          }
+        },
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
     );
   }
 }
