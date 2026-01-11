@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_colors.dart';
 import '../../data/models/character.dart';
 
@@ -9,7 +10,7 @@ class CharacterDetailsScreen extends StatelessWidget {
 
   Widget buildSliverAppBar() {
     return SliverAppBar(
-      expandedHeight: 600,
+      expandedHeight: 500.h,
       pinned: true,
       stretch: true,
       backgroundColor: AppColors.grey,
@@ -20,7 +21,7 @@ class CharacterDetailsScreen extends StatelessWidget {
           style: TextStyle(
             color: AppColors.bluish,
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 18.sp,
           ),
           textAlign: TextAlign.center,
         ),
@@ -44,7 +45,7 @@ class CharacterDetailsScreen extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 14.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.bluish,
           ),
@@ -52,19 +53,19 @@ class CharacterDetailsScreen extends StatelessWidget {
           maxLines: 1,
         ),
         SizedBox(
-          height: 4,
+          height: 4.h,
         ),
         Text(
           info,
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 12.sp,
             fontWeight: FontWeight.w500,
             color: AppColors.bluish,
           ),
           textAlign: TextAlign.start,
           maxLines: 1,
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 8.h),
       ],
     );
   }
@@ -96,11 +97,10 @@ class CharacterDetailsScreen extends StatelessWidget {
                         'Appeared In',
                         '${character.episodesApperance.length.toString()} episodes',
                       ),
-                      SizedBox(height: 20),
                     ],
                   ),
                 ),
-                SizedBox(height: 400),
+                SizedBox(height: 300.h),
               ],
             ),
           ),

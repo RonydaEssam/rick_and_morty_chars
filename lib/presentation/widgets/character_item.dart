@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_colors.dart';
 import '../../constants/strings.dart';
 import '../../data/models/character.dart';
@@ -36,7 +37,7 @@ class CharacterItem extends StatelessWidget {
                 character.name,
                 style: TextStyle(
                   height: 1.2,
-                  fontSize: 18,
+                  fontSize: 12.sp,
                   color: AppColors.grey,
                   fontWeight: FontWeight.bold,
                 ),

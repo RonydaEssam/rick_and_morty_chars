@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../business_logic/cubit/characters_cubit.dart';
 import '../../constants/app_colors.dart';
 import '../../data/models/character.dart';
@@ -31,7 +32,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
       style: TextStyle(
         color: AppColors.grey,
         fontWeight: FontWeight.w500,
-        fontSize: 24,
+        fontSize: 20.sp,
       ),
     );
   }
@@ -43,9 +44,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
       decoration: InputDecoration(
         hintText: 'Find a character ...',
         border: InputBorder.none,
-        hintStyle: TextStyle(color: AppColors.grey, fontSize: 18),
+        hintStyle: TextStyle(color: AppColors.grey, fontSize: 12.sp),
       ),
-      style: TextStyle(color: AppColors.grey, fontSize: 18),
+      style: TextStyle(color: AppColors.grey, fontSize: 12.sp),
       onChanged: (searchedText) => filteringText(searchedText),
     );
   }
@@ -80,7 +81,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
           icon: Icon(
             Icons.manage_search_sharp,
             color: AppColors.grey,
-            size: 28,
+            size: 20.sp,
           ),
         ),
       ];
@@ -161,18 +162,18 @@ class _CharactersScreenState extends State<CharactersScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               'Can\'t connect right now....\nPlease check your Connection.',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 18.sp,
                 color: AppColors.bluish,
                 fontWeight: FontWeight.w500,
                 height: 1.6,
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Image.asset(
               'assets/images/connection_lost.png',
               alignment: Alignment.center,
